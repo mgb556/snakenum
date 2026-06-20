@@ -18,33 +18,10 @@ Current modules include:
 - Configurable thread count for directory enumeration
 - Simple modular design using importable Python files
 
-## Repository Structure
-
-```text
-snakenum/
-├── snakenum.py      # Main menu interface
-├── portsnake.py     # Async TCP port scanner
-├── dirsnake.py      # Web directory brute-forcer
-├── requirements.txt # Python dependencies
-└── README.md
-```
-
 ## Requirements
 
 - Python 3.10+
 - `requests`
-
-Install dependencies with:
-
-```bash
-pip install -r requirements.txt
-```
-
-If you do not have a `requirements.txt` yet, create one with:
-
-```text
-requests
-```
 
 ## Usage
 
@@ -91,14 +68,6 @@ Example:
 ```
 
 This scans all ports on `127.0.0.1`.
-
-You can also provide a smaller range:
-
-```text
-[+] Target IP: 127.0.0.1
-[+] Start port: 1
-[+] End port: 1000
-```
 
 ## Directory Brute Forcing
 
@@ -169,38 +138,6 @@ dirsnake.main([
     "-t", "20"
 ])
 ```
-
-## Development Notes
-
-Recommended pattern for each module:
-
-```python
-def main(argv=None):
-    args = parser.parse_args(argv)
-```
-
-For async modules:
-
-```python
-async def main(argv=None):
-    args = parser.parse_args(argv)
-```
-
-Then protect direct execution with:
-
-```python
-if __name__ == "__main__":
-    main()
-```
-
-or, for async modules:
-
-```python
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-
-This allows each tool to work both as a standalone script and as an importable module.
 
 ## Roadmap
 
